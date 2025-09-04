@@ -19,13 +19,17 @@ jobs:
         node-version: '22'
         cache: 'npm'
         
-        - name: Install dependencies
-      run: npm install
+    - name: Install dependencies
+      run: npm ci
 
     - name: Build application
       run: npm run build
       env:
         NODE_OPTIONS: --max-old-space-size=4096
+        VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://placeholder.supabase.co' }}
+        VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || 'placeholder-key' }}
+        VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY || 'placeholder-key' }}
+        VITE_ANTHROPIC_API_KEY: ${{ secrets.VITE_ANTHROPIC_API_KEY || 'placeholder-key' }}
         
     - name: Deploy to Vercel (Production)
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'

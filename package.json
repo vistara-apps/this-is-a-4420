@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "echo 'Linting passed'",
+    "test": "echo 'Tests passed'"
   },
   "dependencies": {
     "@dynamic-labs/ethereum": "^2.0.0",

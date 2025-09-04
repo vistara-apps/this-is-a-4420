@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY || 'placeholder-key',
   dangerouslyAllowBrowser: true // Note: In production, API calls should go through your backend
 });
 

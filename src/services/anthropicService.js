@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 
 const anthropic = new Anthropic({
-  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
+  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || 'placeholder-key',
   dangerouslyAllowBrowser: true // Note: In production, API calls should go through your backend
 });
 

@@ -19,7 +19,11 @@ import {
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
+import { Toaster } from 'react-hot-toast'
 import './index.css'
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -28,9 +32,21 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       projectId: "9f4bd472c01ba49282b42e5e1874c2af",
       chains: [mainnet, polygon, optimism, arbitrum, base],
     })}>
-      <QueryClientProvider client={new QueryClient()}>
+      <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-          <App />
+          <AuthProvider>
+            <App />
+            <Toaster 
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: '#363636',
+                  color: '#fff',
+                },
+              }}
+            />
+          </AuthProvider>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
